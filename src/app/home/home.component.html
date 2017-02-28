@@ -1,3 +1,34 @@
-<p>
-  home works!
-</p>
+<div>
+    <form (submit)="addFund($event)">
+
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="6">Subscription Info</th>
+                    <th colspan="2">Price Quote</th>
+                    <th colspan="5">Earnings</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <input [(ngModel)]="newFund" name="newFund">
+                    </td>
+                    <td><button  type="submit" [disabled]="newFund===''">Add Fund</button></td>
+                </tr>
+                <!-- <td><input type="checkbox" class="checkbox" [(ngModel)]="todo.completed" /></td> -->
+                <tr *ngFor="let fund of funds; let i=index">
+                    {{ fund.newFund }}
+                </tr>
+            </tbody>
+        </table>
+
+
+
+
+    </form>
+</div>
+
+<div [hidden]="!newFund">
+  {{ newFund }}
+</div>
