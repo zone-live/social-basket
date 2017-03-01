@@ -1,5 +1,5 @@
 <div>
-    <form (submit)="addFund($event)">
+    <form #submitFund="ngForm" novalidate (submit)="addFund(submitFund.value, $event)">
 
         <table>
             <thead>
@@ -11,17 +11,57 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>
-                        <input [(ngModel)]="newFund" name="newFund">
-                    </td>
-                    <td><button  type="submit" [disabled]="newFund===''">Add Fund</button></td>
+                    <td>Name</td>
+                    <td>ISIN</td>
+                    <td>Date bought</td>
+                    <td>Total UPs</td>
+                    <td>UPs value</td>
+                    <td>Value bought</td>
+                    <td>Current UP price</td>
+                    <td>At date</td>
+                    <td>Today's value</td>
+                    <td>Earnings</td>
+                    <td>Gross profitability</td>
+                    <td>Liquid profitability</td>
+                    <td>Days passed</td>
+                </tr>
+                <tr>
+                    <td><input [(ngModel)]="fund.name" name="isin"></td>
+                    <td><input [(ngModel)]="fund.isin" name="name"></td>
+                    <td><input [(ngModel)]="fund.subs_date" name="subs_date"></td>
+                    <td><input [(ngModel)]="fund.up_number" name="up_number"></td>
+                    <td><input [(ngModel)]="fund.up_quote" name="up_quote"></td>
+                    <td><input [(ngModel)]="fund.value" name="value"></td>
+                    <td><input [(ngModel)]="fund.up_price" name="up_price"></td>
+                    <td><input [(ngModel)]="fund.at_date" name="at_date"></td>
+                    <td><input [(ngModel)]="fund.todays_value" name="todays_value"></td>
+                    <td><input [(ngModel)]="fund.earnings" name="earnings"></td>
+                    <td><input [(ngModel)]="fund.gross_proff" name="gross_proff"></td>
+                    <td><input [(ngModel)]="fund.liquid_proff" name="liquid_proff"></td>
+                    <td><input [(ngModel)]="fund.days_passed" name="days_passed"></td>
+                    <td><button  type="submit" class="btn btn-default" [disabled]="fund.name===''">Add Fund</button></td>
                 </tr>
                 <!-- <td><input type="checkbox" class="checkbox" [(ngModel)]="todo.completed" /></td> -->
                 <tr *ngFor="let fund of funds; let i=index">
-                    {{ fund.newFund }}
+                    <td>{{ fund.isin }}</td>
+                    <td>{{ fund.name }}</td>
+                    <td>{{ fund.subs_date }}</td>
+                    <td>{{ fund.up_number }}</td>
+                    <td>{{ fund.up_quote }}</td>
+                    <td>{{ fund.value }}</td>
+                    <td>{{ fund.up_price }}</td>
+                    <td>{{ fund.at_date }}</td>
+                    <td>{{ fund.todays_value }}</td>
+                    <td>{{ fund.earnings }}</td>
+                    <td>{{ fund.earnings }}</td>
+                    <td>{{ fund.gross_proff }}</td>
+                    <td>{{ fund.liquid_proff }}</td>
+                    <td>{{ fund.days_passed }}</td>
                 </tr>
             </tbody>
         </table>
+
+        <p>Total Funds: {{funds.length}}</p>
 
 
 
@@ -29,6 +69,6 @@
     </form>
 </div>
 
-<div [hidden]="!newFund">
-  {{ newFund }}
+<div [hidden]="!name">
+  {{ name }}
 </div>
