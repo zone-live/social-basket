@@ -42,7 +42,7 @@
                     <td><button  type="submit" class="btn btn-default" [disabled]="fund.name===''">Add Fund</button></td>
                 </tr>
                 <!-- <td><input type="checkbox" class="checkbox" [(ngModel)]="todo.completed" /></td> -->
-                <tr *ngFor="let fund of funds; let i=index">
+                <tr *ngFor="let fund of actualFund; let i=index">
                     <td>{{ fund.isin }}</td>
                     <td>{{ fund.name }}</td>
                     <td>{{ fund.subs_date }}</td>
@@ -61,7 +61,7 @@
             </tbody>
         </table>
 
-        <p>Total Funds: {{funds.length}}</p>
+        <p>Total Funds: {{actualFund}}</p>
 
 
 

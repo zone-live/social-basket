@@ -9,12 +9,15 @@ import { Fund } from './fund.interface';
 
 export class HomeComponent implements OnInit {
     public fund : Fund;
-    public funds: any;
+    public actualFund: any;
     public valueBought;
     public todaysValue;
+    public earnings;
+    public grossProff;
+    public liquidProff;
 
     constructor() {
-        this.funds = [];
+        this.actualFund = [];
     }
 
     ngOnInit() {
@@ -38,32 +41,33 @@ export class HomeComponent implements OnInit {
     getValueBought(up_number, up_quote) {
         this.valueBought = Number(up_number) * Number(up_quote);
         console.log(this.valueBought);
-        this.funds.push(this.valueBought);
     }
 
     getEarnings(todays_value, value_bought) {
         console.log('todays_value: ' + todays_value);
         console.log('value_bought: ' + value_bought);
         console.log('todays_value - value_bought = ' + (todays_value - value_bought));
-        return todays_value - value_bought;
+        this.earnings = todays_value - value_bought;
+        return this.earnings;
     }
 
     getTodaysValue(up_price, up_number) {
         this.todaysValue = Number(up_price) * Number(up_number);
         console.log(this.todaysValue);
-        this.funds.push(this.todaysValue);
     }
 
     getGrossProff(todays_value, value_bought) {
         console.log(todays_value + ' ' + value_bought);
         console.log(this.getEarnings(todays_value, value_bought) / value_bought);
-        return this.getEarnings(todays_value, value_bought) / value_bought;
+        this.grossProff = this.getEarnings(todays_value, value_bought) / value_bought;
+        return this.grossProff;
     }
 
     getLiquidProff(todays_value, value_bought) {
         console.log(todays_value + ' ' + value_bought);
         console.log((this.getEarnings(todays_value, value_bought)*0.72) / value_bought);
-        return (this.getEarnings(todays_value, value_bought)*0.72) / value_bought;
+        this.liquidProff = (this.getEarnings(todays_value, value_bought)*0.72) / value_bought;
+        return this.liquidProff;
     }
 
     getDaysPassed(subs_date, at_date) {
@@ -78,7 +82,16 @@ export class HomeComponent implements OnInit {
         this.getEarnings(this.todaysValue, this.valueBought)
         this.getGrossProff(this.todaysValue, this.valueBought)
         this.getLiquidProff(this.todaysValue, this.valueBought)
+
+        this.actualFund.push({
+            'value_bought': this.valueBought,
+            'earnings': this.earnings,
+            'todays_value': this.todaysValue,
+            'gross_proffit': this.grossProff,
+            'liquid_proff': this.liquidProff
+        });
+
+        console.log(this.actualFund);
     }
-    //model = new Fund('isin', 'name', 'subs_date', 2, 31, 10 );
-    //get diagnostic() { return JSON.stringify(this.model); }
+
 }
