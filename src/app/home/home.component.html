@@ -45,21 +45,36 @@
             </tbody>
         </table>
 
-        <div *ngFor="let fund of actualFund">
-            <p>{{fund.value_bought}}</p>
-            <p>{{fund.todays_value}}</p>
-            <p>{{fund.earnings}}</p>
-            <p>{{fund.gross_proffit}}</p>
-            <p>{{fund.liquid_proff}}</p>
-        </div>
+        <ul *ngFor="let fund of actualFund">
+            <li>
+                <span>{{fund.name}}</span>
+                <span class="isin">{{fund.isin}}</span>
+            </li>
+            <li>
+                <label>Value bought:</label>
+                <span>{{fund.value_bought}}</span>
+            </li>
+            <li>
+                <label>Value today:</label>
+                <span>{{fund.todays_value}}</span>
+            </li>
+            <li class="earnings" [ngClass]="{'earn-red': fund.earnings < 0}">
+                <span class="earnings-value">{{fund.earnings}}</span>
+                <a class="profits">
+                    {{fund.liquid_proff}}
+                    <span>
+                        Gross Proffit: {{fund.gross_proffit}}
+                    </span>
+                </a>
+            </li>
+            <li>
+
+            </li>
+        </ul>
         <p>Total Funds: {{actualFund.length}}</p>
 
 
 
 
     </form>
-</div>
-
-<div [hidden]="!name">
-  {{ name }}
 </div>

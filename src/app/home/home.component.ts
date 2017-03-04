@@ -84,6 +84,8 @@ export class HomeComponent implements OnInit {
         this.getLiquidProff(this.todaysValue, this.valueBought)
 
         this.actualFund.push({
+            'name': submitFund.name,
+            'isin': submitFund.isin,
             'value_bought': this.valueBought,
             'earnings': this.earnings,
             'todays_value': this.todaysValue,
