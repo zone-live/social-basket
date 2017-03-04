@@ -42,26 +42,17 @@
                     <td><button  type="submit" class="btn btn-default" [disabled]="fund.name===''">Add Fund</button></td>
                 </tr>
                 <!-- <td><input type="checkbox" class="checkbox" [(ngModel)]="todo.completed" /></td> -->
-                <tr *ngFor="let fund of actualFund; let i=index">
-                    <td>{{ fund.isin }}</td>
-                    <td>{{ fund.name }}</td>
-                    <td>{{ fund.subs_date }}</td>
-                    <td>{{ fund.up_number }}</td>
-                    <td>{{ fund.up_quote }}</td>
-                    <td>{{ fund.value }}</td>
-                    <td>{{ fund.up_price }}</td>
-                    <td>{{ fund.at_date }}</td>
-                    <td>{{ fund.todays_value }}</td>
-                    <td>{{ fund.earnings }}</td>
-                    <td>{{ fund.earnings }}</td>
-                    <td>{{ fund.gross_proff }}</td>
-                    <td>{{ fund.liquid_proff }}</td>
-                    <td>{{ fund.days_passed }}</td>
-                </tr>
             </tbody>
         </table>
 
-        <p>Total Funds: {{actualFund}}</p>
+        <div *ngFor="let fund of actualFund">
+            <p>{{fund.value_bought}}</p>
+            <p>{{fund.todays_value}}</p>
+            <p>{{fund.earnings}}</p>
+            <p>{{fund.gross_proffit}}</p>
+            <p>{{fund.liquid_proff}}</p>
+        </div>
+        <p>Total Funds: {{actualFund.length}}</p>
 
 
 
