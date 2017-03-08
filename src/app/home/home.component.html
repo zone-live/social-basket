@@ -41,11 +41,10 @@
                     <td><input [(ngModel)]="fund.days_passed" name="days_passed"></td>
                     <td><button  type="submit" class="btn btn-default" [disabled]="fund.name===''">Add Fund</button></td>
                 </tr>
-                <!-- <td><input type="checkbox" class="checkbox" [(ngModel)]="todo.completed" /></td> -->
             </tbody>
         </table>
 
-        <ul *ngFor="let fund of actualFund">
+        <ul class="actual-fund" *ngFor="let fund of actualFund">
             <li>
                 <span>{{fund.name}}</span>
                 <span class="isin">{{fund.isin}}</span>
@@ -72,8 +71,6 @@
             </li>
         </ul>
         <p>Total Funds: {{actualFund.length}}</p>
-
-
 
 
     </form>
