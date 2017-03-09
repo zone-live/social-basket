@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
 
     ngOnInit() {
         this.fund = {
+            _id: '',
             name: '',
             isin: '',
             subs_date: '',

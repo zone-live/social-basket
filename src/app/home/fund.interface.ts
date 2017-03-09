@@ -1,4 +1,5 @@
 export interface Fund {
+    _id: string,
     name: string,
     isin: string,
     subs_date: string,
