@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Fund } from './fund.interface';
+import { FundService } from '.././fund.service';
+//import { Fund } from './fund.interface';
+import { Fund } from '../.././Fund';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +10,7 @@ import { Fund } from './fund.interface';
 })
 
 export class HomeComponent implements OnInit {
-    public fund : Fund;
+    //public fund : Fund;
     public actualFund: any;
     public valueBought;
     public todaysValue;
@@ -16,27 +18,37 @@ export class HomeComponent implements OnInit {
     public grossProff;
     public liquidProff;
 
-    constructor() {
+    funds: Fund[];
+
+    constructor(private fundService:FundService) {
+
         this.actualFund = [];
+
+        this.fundService.getFunds()
+          .subscribe(funds => {
+              console.log(funds);
+              this.funds = funds;
+          })
     }
 
+
     ngOnInit() {
-        this.fund = {
-            _id: '',
-            name: '',
-            isin: '',
-            subs_date: '',
-            up_number: 0,
-            up_quote: 0,
-            value_bought: 0,
-            up_price: 0,
-            at_date: '',
-            todays_value: 0,
-            earnings: 0,
-            gross_proff: 0,
-            liquid_proff: 0,
-            days_passed: 0
-        }
+        // this.fund = {
+        //     _id: '',
+        //     name: '',
+        //     isin: '',
+        //     subs_date: '',
+        //     up_number: 0,
+        //     up_quote: 0,
+        //     value_bought: 0,
+        //     up_price: 0,
+        //     at_date: '',
+        //     todays_value: 0,
+        //     earnings: 0,
+        //     gross_proff: 0,
+        //     liquid_proff: 0,
+        //     days_passed: 0
+        // }
     }
 
     getValueBought(up_number, up_quote) {
