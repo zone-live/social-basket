@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
     public liquidProff;
 
     funds: Fund[];
+    title: string;
 
     constructor(private fundService:FundService) {
 
@@ -28,7 +29,6 @@ export class HomeComponent implements OnInit {
           .subscribe(funds => {
               console.log(funds);
               this.funds = funds;
-              funds.push(this.funds);
           })
     }
 
@@ -94,5 +94,52 @@ export class HomeComponent implements OnInit {
 
         console.log(this.actualFund);
     }
+
+/*
+
+addTask(event) {
+     event.preventDefault();
+     var newTask = {
+         title: this.title,
+         isDone: false
+     }
+
+     this.taskService.addTask(newTask)
+       .subscribe(task => {
+           this.tasks.push(task);
+           this.title = '';
+       })
+ }
+
+ deleteTask(id) {
+     var tasks = this.tasks;
+     this.taskService.deleteTask(id)
+       .subscribe(data => {
+           if (data.n == 1) {
+               for (var i = 0; i < tasks.length; i++) {
+                   if (tasks[i]._id == id) {
+                       tasks.splice(i, 1);
+                   }
+               }
+           }
+       })
+ }
+
+ updateStatus(task) {
+     var _task = {
+         _id: task._id,
+         title: task.title,
+         isDone: !task.isDone
+     };
+
+     this.taskService.updateStatus(_task)
+       .subscribe(data => {
+           task.isDone = !task.isDone;
+       })
+ }
+
+
+*/
+
 
 }
