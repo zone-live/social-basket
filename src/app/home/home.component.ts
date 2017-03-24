@@ -19,7 +19,21 @@ export class HomeComponent implements OnInit {
     public liquidProff;
 
     funds: Fund[];
-    title: string;
+
+/*    isin: String;
+    name: String;
+    subs_date: String;
+    up_number: Number;
+    up_quote: Number;
+    value: Number;
+    up_price: Number;
+    at_date: String;
+    todays_value: Number;
+    earnings: Number;
+    gross_proff: Number;
+    liquid_proff: Number;
+    days_passed: Number;
+*/
 
     constructor(private fundService:FundService) {
 
@@ -91,6 +105,22 @@ export class HomeComponent implements OnInit {
             'gross_proffit': this.grossProff,
             'liquid_proff': this.liquidProff
         });
+
+         var newFund = {
+            name: submitFund.name,
+            isin: submitFund.isin,
+            value_bought: this.valueBought,
+            earnings: this.earnings,
+            todays_value: this.todaysValue,
+            gross_proffit: this.grossProff,
+            liquid_proff: this.liquidProff
+         }
+
+      this.fundService.addFund(newFund)
+       .subscribe(fund => {
+           this.funds.push(fund);
+           submitFund.name = '';
+       })
 
         console.log(this.actualFund);
     }
