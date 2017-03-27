@@ -113,51 +113,35 @@ export class HomeComponent implements OnInit {
         console.log(this.actualFund);
     }
 
-/*
+    deleteFund(id) {
+        var funds = this.funds;
+        this.fundService.deleteFund(id)
+            .subscribe(data => {
+                if (data.n == 1) {
+                    for (var i = 0; i < funds.length; i++) {
+                        if (funds[i]._id == id) {
+                            funds.splice(i, 1);
+                        }
+                    }
+                }
+            })
+    }
 
-addTask(event) {
-     event.preventDefault();
-     var newTask = {
-         title: this.title,
-         isDone: false
-     }
+    updateFund(fund) {
+        var _fund = {
+            _id: fund._id,
+            name: fund.name,
+            isin: fund.isin
+        };
 
-     this.taskService.addTask(newTask)
-       .subscribe(task => {
-           this.tasks.push(task);
-           this.title = '';
-       })
- }
-
- deleteTask(id) {
-     var tasks = this.tasks;
-     this.taskService.deleteTask(id)
-       .subscribe(data => {
-           if (data.n == 1) {
-               for (var i = 0; i < tasks.length; i++) {
-                   if (tasks[i]._id == id) {
-                       tasks.splice(i, 1);
-                   }
-               }
-           }
-       })
- }
-
- updateStatus(task) {
-     var _task = {
-         _id: task._id,
-         title: task.title,
-         isDone: !task.isDone
-     };
-
-     this.taskService.updateStatus(_task)
-       .subscribe(data => {
-           task.isDone = !task.isDone;
-       })
- }
+        this.fundService.updateFund(_fund)
+          .subscribe(data => {
+              fund.name = fund.name;
+              fund.isin = fund.isin;
+          })
+    }
 
 
-*/
 
 
 }

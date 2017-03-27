@@ -26,7 +26,7 @@ export class FundService {
         .map(res => res.json());
   }
 
-  updateStatus(fund) {
+  updateFund(fund) {
       var headers = new Headers();
       headers.append('Content-Type', 'application/json');
       return this.http.put('/api/fund/'+fund._id, JSON.stringify(fund), {headers: headers})
