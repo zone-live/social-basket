@@ -52,19 +52,19 @@
             </li>
             <li>
                 <label>Value bought:</label>
-                <span>{{fund.value_bought}}</span>
+                <span>{{fund.value_bought | currency}}</span>
             </li>
             <li>
                 <label>Today's value:</label>
-                <span>{{fund.todays_value}}</span>
+                <span>{{fund.todays_value | currency}}</span>
             </li>
             <li class="earnings" [ngClass]="{'earn-red': fund.earnings < 0}">
                 <label>Earnings:</label>
-                <span class="earnings-value">{{fund.earnings}}</span>
+                <span class="earnings-value">{{fund.earnings | currency}}</span>
                 <a class="profits">
-                    {{fund.liquid_proff}}
+                    {{fund.liquid_proff | percent}}
                     <span>
-                        Gross Proffit: {{fund.gross_proffit}}
+                        Gross Proffit: {{fund.gross_proffit | percent}}
                     </span>
                 </a>
             </li>
